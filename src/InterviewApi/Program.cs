@@ -1,9 +1,6 @@
 using InterviewApi.Clients.Implementations;
 using InterviewApi.Clients.Interfaces;
-using InterviewApi.Repositories.Implementations;
-using InterviewApi.Repositories.Interfaces;
-using InterviewApi.Services.Implementations;
-using InterviewApi.Services.Interfaces;
+
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +10,7 @@ builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(conte
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-builder.Services.AddSingleton<IOrderRepository, InMemoryOrderRepository>();
-builder.Services.AddScoped<IOrderService, OrderService>();
+
 
 builder.Services.AddHttpClient<IExternalApiClient, ExternalApiClient>(client =>
 {
